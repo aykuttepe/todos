@@ -19,10 +19,8 @@ function NewToDoForm() {
 
   const onSubmit = () => {
     if (text.id!==-1) {
-      console.log("updated");
       updateToDo(form.content);
     } else {
-      console.log("added");
       addToDo(form.content);
     }
     form.content="";
