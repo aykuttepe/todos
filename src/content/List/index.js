@@ -19,9 +19,7 @@ function List() {
       filtered = todos.filter((todo) => todo.isCompleted === true);
       break;
     default:
-      console.log("switch te hata olabilir!!!!");
       throw new Error("switch te hata olabilir");
-      
   }
 
   return (
@@ -29,7 +27,6 @@ function List() {
       {filtered.map((todo) => (
         <Item key={todo.id} todo={todo}></Item>
       ))}
-      
     </ul>
   );
 }

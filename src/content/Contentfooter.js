@@ -2,13 +2,10 @@ import React from "react";
 import { useToDo } from "../contexts/ToDoContext";
 
 function Contentfooter() {
-  const { todos, filter, setFilter, setToDos } = useToDo();
-
-  const clearCompleted = () =>
-    setToDos((prev) => prev.filter((todo) => todo.isCompleted === false));
+  const { todos, filter, setFilter, theme } = useToDo();
 
   return (
-    <footer className="footer">
+    <footer className={`footer ${theme}`}>
       <span className="todo-count">
         <strong>{todos.length} </strong>
         {todos.length > 1 ? "items" : "item"} left
@@ -46,15 +43,6 @@ function Contentfooter() {
           </a>
         </li>
       </ul>
-
-      <button
-        id="clr"
-        title="Hide Completed"
-        className="clear-completed"
-        onClick={clearCompleted}
-      >
-        Clear completed
-      </button>
     </footer>
   );
 }

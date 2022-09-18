@@ -4,27 +4,11 @@ body {
   padding: 0;
 }
 
-button #clr {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  vertical-align: baseline;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  -webkit-appearance: none;
-  appearance: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #f5f5f5;
-  color: #4d4d4d;
+  background: #ece9e9;
+  color: #303030;
   min-width: 230px;
   max-width: 550px;
   margin: 0 auto;
@@ -41,8 +25,15 @@ body {
   display: none;
 }
 
-.todoapp {
+.light .todoapp {
   background: #fff;
+  margin: 130px 0 40px 0;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+.dark .todoapp {
+  background-color: #333;
+  color: #fff !important;
   margin: 130px 0 40px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -66,17 +57,23 @@ body {
   color: #e6e6e6;
 }
 
-.todoapp h1 {
+.light .todoapp h1 {
   position: absolute;
   top: -155px;
   width: 100%;
   font-size: 100px;
   font-weight: 100;
   text-align: center;
-  color: rgba(175, 47, 47, 0.15);
-  -webkit-text-rendering: optimizeLegibility;
-  -moz-text-rendering: optimizeLegibility;
-  text-rendering: optimizeLegibility;
+  color: #424281;
+}
+.dark .todoapp h1 {
+  position: absolute;
+  top: -155px;
+  width: 100%;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: #d9d9ff;
 }
 
 .new-todo,
@@ -107,7 +104,7 @@ body {
 .main {
   position: relative;
   z-index: 2;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #e0e0e0;
 }
 
 .toggle-all {
@@ -228,14 +225,17 @@ body {
   width: 40px;
   height: 40px;
   margin: auto 0;
+  border: none;
+  border-radius: 10px;
   font-size: 30px;
-  color: #cc9a9a;
+  background-color: #da5555;
+  color: #f5ecec;
   margin-bottom: 11px;
   transition: color 0.2s ease-out;
 }
 
 .todo-list li .destroy:hover {
-  color: #af5b5e;
+  background-color: #aa1212;
 }
 
 .todo-list li .destroy:after {
@@ -254,8 +254,15 @@ body {
   margin-bottom: -1px;
 }
 
-.footer {
-  color: #777;
+.light .footer {
+  color: #333;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+}
+.dark .footer {
+  color: #fff;
   padding: 10px 15px;
   height: 20px;
   text-align: center;
@@ -306,9 +313,9 @@ body {
   border-radius: 3px;
   cursor: pointer; /* Because of Mavo: we don't use the href attribute in such situations */
 }
-.error{
+.error {
   display: flex;
-  text-align:left;
+  text-align: left;
   margin-left: 10%;
   margin-top: 0;
   color: red;
@@ -318,26 +325,23 @@ body {
   border-color: rgba(175, 47, 47, 0.1);
 }
 
-.filters li a.selected {
-  border-color: rgba(175, 47, 47, 0.2);
+.dark .filters li a.selected {
+  border-color: #fff;
+}
+.light .filters li a.selected {
+  border-color: #50f3b5;
 }
 
-.clear-completed,
-html .clear-completed:active {
-  float: right;
-  position: relative;
-  line-height: 20px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.clear-completed:hover {
-  text-decoration: underline;
-}
-
-.info {
-  margin: 65px auto 0;
+.light .info {
+  margin: 20px auto 0;
   color: #424281;
+  font-size: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+.dark .info {
+  margin: 20px auto 0;
+  color: #c0c0ec;
   font-size: 20px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   text-align: center;
@@ -351,10 +355,6 @@ html .clear-completed:active {
   color: inherit;
   text-decoration: none;
   font-weight: 400;
-}
-
-.info a:hover {
-  text-decoration: underline;
 }
 
 /*
@@ -446,14 +446,53 @@ meta,
 .login-header {
   font-family: "Montserrat", sans-serif;
 }
-.btn  {
-  display: flex;
-  margin-top: 15px;
-  
+.login {
+  display: block;
+  margin-top: 7px;
+  padding: 5px 8px;
+  background-color: rgb(125, 216, 228);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  text-decoration-line: none !important;
+  font-weight: 600;
+  border-radius: 5px;
 }
 
-.btn:hover {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+.login:hover {
+  background-color: #6262d6;
+}
+input#fullName {
+  width: 250px;
+  height: fit-content;
+  font-size: large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+label#lbfullName {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.darkbutton {
+  background: rgb(121, 145, 151);
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  margin: 20px;
+  border-radius: 10px;
+}
+.darkbutton:hover {
+  background: rgb(106, 106, 134);
+}
+
+.dark {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+.light {
+  background-color: #fff !important;
+  color: #333 !important;
 }

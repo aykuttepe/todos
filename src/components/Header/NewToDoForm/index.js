@@ -5,7 +5,7 @@ function NewToDoForm() {
   const [show, setShow] = useState(false);
 
   const [form, setForm] = useState({ content: "" });
-  const { addToDo, text, setText, updateToDo } = useToDo();
+  const { addToDo, text, updateToDo } = useToDo();
 
   const handleChange = (event) => {
     let sizes = event.target.value.length;
@@ -18,12 +18,12 @@ function NewToDoForm() {
   };
 
   const onSubmit = () => {
-    if (text.id!==-1) {
+    if (text.id !== -1) {
       updateToDo(form.content);
     } else {
       addToDo(form.content);
     }
-    form.content="";
+    form.content = "";
   };
 
   return (
